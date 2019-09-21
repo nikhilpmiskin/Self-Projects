@@ -1,0 +1,104 @@
+Cluster  0
+               StateCode        City  DrivingMilesFromChicago
+CityState                                                    
+Buffalo, NY           NY     Buffalo                      531
+Kanas City, MO        MO  Kanas City                      529
+Memphis, TN           TN     Memphis                      536
+Cluster  1
+              StateCode       City  DrivingMilesFromChicago
+CityState                                                  
+Boise, ID            ID      Boise                     1702
+Las Vegas, NV        NV  Las Vegas                     1755
+Phoenix, AZ          AZ    Phoenix                     1804
+Cluster  2
+                 StateCode          City  DrivingMilesFromChicago
+CityState                                                        
+Houston, TX             TX       Houston                     1089
+Jacksonville, FL        FL  Jacksonville                     1058
+Portland, ME            ME      Portland                     1087
+Cluster  3
+                StateCode         City  DrivingMilesFromChicago
+CityState                                                      
+Charleston, SC         SC   Charleston                      911
+Dallas, TX             TX       Dallas                      933
+Hartford, CT           CT     Hartford                      903
+New Orleans, LA        LA  New Orleans                      927
+Norfolk, VA            VA      Norfolk                      891
+Rapid City, SD         SD   Rapid City                      909
+Cluster  4
+                StateCode         City  DrivingMilesFromChicago
+CityState                                                      
+Cleveland, OH          OH    Cleveland                      342
+Columbus, OH           OH     Columbus                      352
+Des Moines, IA         IA   Des Moines                      333
+Detroit, MI            MI      Detroit                      278
+Louisville, KY         KY   Louisville                      297
+Saint Louis, MO        MO  Saint Louis                      300
+Cluster  5
+                   StateCode            City  DrivingMilesFromChicago
+CityState                                                            
+Albuquerque, NM           NM     Albuquerque                     1341
+Miami, FL                 FL           Miami                     1373
+Salt Lake City, UT        UT  Salt Lake City                     1404
+Cluster  6
+                  StateCode           City  DrivingMilesFromChicago
+CityState                                                          
+Los Angeles, CA          CA    Los Angeles                     2028
+Portland, OR             OR       Portland                     2122
+San Diego, CA            CA      San Diego                     2088
+San Francisco, CA        CA  San Francisco                     2148
+Seattle, WA              WA        Seattle                     2070
+Cluster  7
+                StateCode         City  DrivingMilesFromChicago
+CityState                                                      
+Atlanta, GA            GA      Atlanta                      712
+Baltimore, MD          MD    Baltimore                      704
+Birmingham, AL         AL   Birmingham                      661
+Fargo, ND              ND        Fargo                      644
+Little Rock, AR        AR  Little Rock                      655
+Washington, DC         DC   Washington                      705
+Wichita, KS            KS      Wichita                      725
+Cluster  8
+                   StateCode            City  DrivingMilesFromChicago
+CityState                                                            
+Billings, MT              MT        Billings                     1247
+Grand Junction, CO        CO  Grand Junction                     1252
+Orlando, FL               FL         Orlando                     1152
+San Antonio, TX           TX     San Antonio                     1210
+Cluster  9
+                 StateCode          City  DrivingMilesFromChicago
+CityState                                                        
+Indianapolis, IN        IN  Indianapolis                      179
+Milwaukee, WI           WI     Milwaukee                       92
+Cluster  10
+                  StateCode           City  DrivingMilesFromChicago
+CityState                                                          
+Albany, NY               NY         Albany                      820
+Charlotte, NC            NC      Charlotte                      770
+Columbia, SC             SC       Columbia                      802
+Jackson, MS              MS        Jackson                      747
+New York, NY             NY       New York                      811
+Oklahoma City, OK        OK  Oklahoma City                      796
+Philadelphia, PA         PA   Philadelphia                      761
+Cluster  11
+          StateCode  City  DrivingMilesFromChicago
+CityState                                         
+Reno, NV         NV  Reno                     1924
+Cluster  12
+                StateCode         City  DrivingMilesFromChicago
+CityState                                                      
+Charleston, WV         WV   Charleston                      484
+Minneapolis, MN        MN  Minneapolis                      407
+Nashville, TN          TN    Nashville                      472
+Omaha, NE              NE        Omaha                      469
+Pittsburgh, PA         PA   Pittsburgh                      460
+Cluster  13
+            StateCode     City  DrivingMilesFromChicago
+CityState                                              
+EL Paso, TX        TX  EL Paso                     1488
+Cluster  14
+             StateCode      City  DrivingMilesFromChicago
+CityState                                                
+Boston, MA          MA    Boston                      986
+Cheyenne, WY        WY  Cheyenne                      968
+Denver, CO          CO    Denver                     1009
