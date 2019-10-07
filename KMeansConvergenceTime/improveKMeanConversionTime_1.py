@@ -5,8 +5,8 @@ import pandas
 import time
 import matplotlib.pyplot as plt
 from matplotlib import style
-#from mpl_toolkits.basemap import Basemap
-#from geopy.geocoders import Nominatim
+from mpl_toolkits.basemap import Basemap
+from geopy.geocoders import Nominatim
 import random
 
 style.use('ggplot')
@@ -20,9 +20,17 @@ trainData = numpy.reshape(numpy.asarray(DistanceFromChicago['DrivingMilesFromChi
 N=15
 colr = ["#"+''.join([random.choice('0123456789ABCDEF') for j in range(6)])
                      for i in range(N)]
+kmN = 0
+
+def getClosestCenter(x, centers):
+    dist = []
+    for i in centers:
+        dist.append(abs(x-i))
+    minC = min(dist)
+    return dist.index(minC)
 
 timeRnd = []
-for kc in range(1,6):
+for kc in range(1,60):
     start_time1 = time.time()
     KClusters = kc
     
@@ -32,33 +40,34 @@ for kc in range(1,6):
     time_taken1 = time.time() - start_time1
     timeRnd.append(time_taken1)
     
-    #Plotting on map for k=15
-    if KClusters == 5:
-#        DistanceFromChicago['KMeanCluster'] = kmeans1.labels_
-#    
-#        map = Basemap(llcrnrlon=-119,llcrnrlat=22,urcrnrlon=-64,urcrnrlat=49,
-#                projection='lcc',lat_1=32,lat_2=45,lon_0=-95)
-#        
-#        # load the shapefile, use the name 'states'
-#        map.readshapefile('st99_d00', name='states', drawbounds=True)
-#        # Get the location of each city and plot it
-#        geolocator = Nominatim()
-#        loc1=[]
-#        rgb=[]
-#        for index, row in DistanceFromChicago.iterrows():
-#            city = row['City']
-#            loc = geolocator.geocode(city)
-#            x, y = map(loc.longitude, loc.latitude)
-#            loc1.append([x,y])
-#            rgb.append(colr[row['KMeanCluster']])
-#        X=[i[0] for i in loc1]
-#        Y=[i[1] for i in loc1]
-#        map.scatter(X, Y, c=rgb, s=50)
-#        loc = geolocator.geocode("Chicago")
-#        x, y = map(loc.longitude, loc.latitude)
-#        map.scatter(x,y,s=100)
-#        plt.title("Plot with Random initial values")
-#        plt.show()
+    #Plotting on map for k=N
+    if KClusters == N:
+        kmN = kmeans1
+        DistanceFromChicago['KMeanCluster1'] = kmeans1.labels_
+        
+        map = Basemap(llcrnrlon=-119,llcrnrlat=22,urcrnrlon=-64,urcrnrlat=49,
+                projection='lcc',lat_1=32,lat_2=45,lon_0=-95)
+        
+        # load the shapefile, use the name 'states'
+        map.readshapefile('st99_d00', name='states', drawbounds=True)
+        # Get the location of each city and plot it
+        geolocator = Nominatim()
+        loc1=[]
+        rgb=[]
+        for index, row in DistanceFromChicago.iterrows():
+            city = row['City']
+            loc = geolocator.geocode(city)
+            x, y = map(loc.longitude, loc.latitude)
+            loc1.append([x,y])
+            rgb.append(colr[getClosestCenter(kmeans1.cluster_centers_[row['KMeanCluster1']], kmeans1.cluster_centers_)])
+        X=[i[0] for i in loc1]
+        Y=[i[1] for i in loc1]
+        map.scatter(X, Y, c=rgb, s=50)
+        loc = geolocator.geocode("Chicago")
+        x, y = map(loc.longitude, loc.latitude)
+        map.scatter(x,y,s=100)
+        plt.title("Plot with Random initial values")
+        plt.show()
         for k in range(KClusters):
             print("Cluster ", k)
             print(DistanceFromChicago[kmeans1.labels_ == k])
@@ -71,7 +80,7 @@ tDataMin = int(min(trainData))
 tDataMax = int(max(trainData))
 
 timeInit = []
-for kc in range(1,6):
+for kc in range(1,60):
     KClusters=kc
     start_time = time.time()
     initialGuess = []
@@ -88,33 +97,33 @@ for kc in range(1,6):
     time_taken2 = time.time() - start_time
     timeInit.append(time_taken2)
     
-    #Plotting on map for k=15
-    if KClusters == 5:
-#        DistanceFromChicago['KMeanCluster'] = kmeans.labels_
-#    
-#        map = Basemap(llcrnrlon=-119,llcrnrlat=22,urcrnrlon=-64,urcrnrlat=49,
-#                projection='lcc',lat_1=32,lat_2=45,lon_0=-95)
-#        
-#        # load the shapefile, use the name 'states'
-#        map.readshapefile('st99_d00', name='states', drawbounds=True)
-#        # Get the location of each city and plot it
-#        geolocator = Nominatim()
-#        loc1=[]
-#        rgb=[]
-#        for index, row in DistanceFromChicago.iterrows():
-#            city = row['City']
-#            loc = geolocator.geocode(city)
-#            x, y = map(loc.longitude, loc.latitude)
-#            loc1.append([x,y])
-#            rgb.append(colr[row['KMeanCluster']])
-#        X=[i[0] for i in loc1]
-#        Y=[i[1] for i in loc1]
-#        map.scatter(X, Y, c=rgb, s=50)
-#        loc = geolocator.geocode("Chicago")
-#        x, y = map(loc.longitude, loc.latitude)
-#        map.scatter(x,y,s=100)
-#        plt.title("Plot with initial value defined")
-#        plt.show()
+    #Plotting on map for k=N
+    if KClusters == N:
+        DistanceFromChicago['KMeanCluster'] = kmeans.labels_
+    
+        map = Basemap(llcrnrlon=-119,llcrnrlat=22,urcrnrlon=-64,urcrnrlat=49,
+                projection='lcc',lat_1=32,lat_2=45,lon_0=-95)
+        
+        # load the shapefile, use the name 'states'
+        map.readshapefile('st99_d00', name='states', drawbounds=True)
+        # Get the location of each city and plot it
+        geolocator = Nominatim()
+        loc1=[]
+        rgb=[]
+        for index, row in DistanceFromChicago.iterrows():
+            city = row['City']
+            loc = geolocator.geocode(city)
+            x, y = map(loc.longitude, loc.latitude)
+            loc1.append([x,y])
+            rgb.append(colr[getClosestCenter(kmeans.cluster_centers_[row['KMeanCluster']], kmN.cluster_centers_)])
+        X=[i[0] for i in loc1]
+        Y=[i[1] for i in loc1]
+        map.scatter(X, Y, c=rgb, s=50)
+        loc = geolocator.geocode("Chicago")
+        x, y = map(loc.longitude, loc.latitude)
+        map.scatter(x,y,s=100)
+        plt.title("Plot with initial value defined")
+        plt.show()
         
         for k in range(KClusters):
             print("Cluster ", k)
@@ -128,10 +137,10 @@ print(kmeans.cluster_centers_)
 percentFaster = (time_taken1 - time_taken2) *100 / (time_taken1)
 print("Sorted is faster than random by " + str(round(percentFaster,2)) + "%")
 
-#plt.plot(range(1,60), timeRnd, label="Random Initialization")
-#plt.plot(range(1,60), timeInit, label="Midpoint Initialization")
-#plt.xlabel('K Values')
-#plt.ylabel('Time taken (in s)')
-#plt.legend()
-#plt.show()
+plt.plot(range(1,60), timeRnd, label="Random Initialization")
+plt.plot(range(1,60), timeInit, label="Midpoint Initialization")
+plt.xlabel('K Values')
+plt.ylabel('Time taken (in s)')
+plt.legend()
+plt.show()
 
